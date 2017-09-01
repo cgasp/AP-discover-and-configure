@@ -1,0 +1,11 @@
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2017-08-17 09:59 Mitteleuropäische Sommerzeit
+Stats: 0:00:08 elapsed; 0 hosts completed (0 up), 8 undergoing ARP Ping Scan
+Parallel DNS resolution of 8 hosts. Timing: About 0.00% done
+Nmap scan report for nb-mrezzonico.lan.intra (10.10.31.194)
+Host is up (0.054s latency).
+MAC Address: 40:B0:34:52:2B:2B (Hewlett Packard)
+Nmap scan report for nb-knorman2.lan.intra (10.10.31.195)
+Host is up (0.026s latency).
+MAC Address: E8:2A:EA:65:33:44 (Intel Corporate)
+Nmap done: 8 IP addresses (2 hosts up) scanned in 8.42 seconds

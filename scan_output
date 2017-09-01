@@ -1,0 +1,17 @@
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2017-09-01 10:20 Mitteleuropäische Sommerzeit
+Nmap scan report for 192.168.0.1
+Host is up (0.00s latency).
+MAC Address: 50:09:59:E2:F5:F9 (Technicolor CH USA)
+Nmap scan report for 192.168.0.10
+Host is up (0.0010s latency).
+MAC Address: 50:09:59:E2:F5:FB (Technicolor CH USA)
+Nmap scan report for 192.168.0.18
+Host is up (0.00s latency).
+MAC Address: 38:FF:36:2D:E4:30 (Ruckus Wireless)
+Nmap scan report for 192.168.0.19
+Host is up (0.00s latency).
+MAC Address: 38:FF:36:2D:B8:A0 (Ruckus Wireless)
+Nmap scan report for 192.168.0.17
+Host is up.
+Nmap done: 256 IP addresses (5 hosts up) scanned in 10.87 seconds
