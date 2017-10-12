@@ -21,6 +21,15 @@ Script for Automatic Ruckus AP Provisioning.
 It will scan the local network (default : 192.168.0.0/24) and look for Ruckus AP.
 After it had detected Ruckus AP, it will try to connect in SSH and to configure the WLC/SCG IP.
 It will connect to All Ruckus AP connected to network LAN scanned sequentially.
+
+Usage : 
+
+python main.py -u super -p sp-admin -a 192.168.0.1 -w 10.0.0.1
+
+Limitation : 
+
+Only IPv4 supported 
+
 """
     parser = argparse.ArgumentParser(description=text_description, formatter_class=argparse.RawTextHelpFormatter)
 
@@ -43,6 +52,8 @@ It will connect to All Ruckus AP connected to network LAN scanned sequentially.
     parser.add_argument('-s', '--subnet', dest='subnet', action='store', type=str, nargs='?',
                         default=default_subnet,
                         help='subnet and subnet mask e.g. -s 192.168.0.0/255.255.255.0 \nDEFAULT: '+default_subnet)
+    parser.add_argument('-a', '--ap-ip', dest='ap_ip', action='store', type=str, help='IP of AP, if given no scanning will be done')
+
     parser.add_argument('-w', '--wlc_ip', dest='wlc_ip', action='store', type=str, nargs='?',
                         default=default_wlc_ip, help='WLC IP to configure\nDEFAULT: '+default_wlc_ip)
 
@@ -181,8 +192,14 @@ def main():
     args = arg_parse()
     range_ip = IPNetwork(args.subnet)
     print "[INFO] scanning network .... (take some seconds - depending network size)"
-    # Scan network to get list of Ruckus AP
-    ruckus_hosts = keep_scanning(range_ip.network, range_ip.prefixlen)
+
+    ruckus_hosts = []
+    if not args.ap_ip:
+        # Scan network to get list of Ruckus AP
+        ruckus_hosts = keep_scanning(range_ip.network, range_ip.prefixlen)
+    elif IPAddress(args.ap_ip).version == 4:
+        ruckus_hosts.extend(args.ap_ip.split(','))
+
     # If Ruckus AP retrieved
     if ruckus_hosts:
         for host in ruckus_hosts:
